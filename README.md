@@ -3,7 +3,7 @@
 ## Project Overview
 This project is an end-to-end data analysis focused on payment monitoring and fraud detection. Using a dataset of 10,055 transactions across 4 payment service providers (PSPs) and 10 countries, I simulated core tasks of a Payment Operations / Fraud Analyst: tracking system health, identifying gateway outages, and investigating fraud patterns.
 
-![iGaming Risk Intelligence Dashboard](dashboard.png)
+![iGaming Risk Intelligence Dashboard](Dashboard.png)
 
 ## Global Portfolio Metrics (KPIs)
 * Total Volume: €5,590,234
