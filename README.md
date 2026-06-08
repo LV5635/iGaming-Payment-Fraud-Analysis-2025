@@ -1,37 +1,29 @@
-# iGaming Payment & Fraud Risk Analysis (2025)
+# iGaming Payment Operations & Anti-Fraud Analysis (2025)
 
-## 📌 Project Overview
-An end-to-end data analysis project based on a dataset of **10,055 transactions** across 4 payment providers (PSP) and 10 countries. The purpose of this project is to simulate real-world Junior Payment Operations & Fraud Analyst tasks: monitoring payment health (Success/Approval Rates), discovering payment gateway technical outages, and detecting complex fraud patterns.
+## Project Overview
+This project is an end-to-end data analysis focused on payment monitoring and fraud detection. Using a dataset of 10,055 transactions across 4 payment service providers (PSPs) and 10 countries, I simulated core tasks of a Payment Operations / Fraud Analyst: tracking system health, identifying gateway outages, and investigating fraud patterns.
 
----
+## Global Portfolio Metrics (KPIs)
+* Total Volume: €5,590,234
+* Success Rate (SR): 64.9%
+* Approval Rate (AR): 75.6%
+* Chargeback Ratio: 0.66%
+* Fraud Flag Rate: 3.82%
 
-## 📊 Key Performance Indicators (KPIs) Discovered
-* **Total Processed Volume:** €5,590,234
-* **Global Success Rate (SR):** 64.9%
-* **Global Approval Rate (AR):** 75.6%
-* **Overall Chargeback Ratio:** 0.66%
-* **Fraud Rate:** 3.82%
+## Incident Investigations
 
----
+### Case 1: Velocity Attack / Card Testing (Player PL00001)
+* **Anomaly:** Player account generated 25 successful deposits within 50 minutes. The operations triggered a critical Risk Score (85+) due to the use of 27 unique card BINs from Germany on a single account.
+* **Resolution:** Immediate account suspension, device fingerprint audit, and blacklisting of the compromised BIN ranges to prevent further card-testing attempts.
 
-## 🚨 Critical Incidents & Anomalies Investigated
+### Case 2: Coordinated Friendly Fraud Spike (Brazil Market)
+* **Anomaly:** A severe chargeback spike reaching 4.2% was detected in June 2025. The issue was strictly isolated to Provider_B and heavily concentrated within the Mastercard BIN range (500000–559999).
+* **Resolution:** Implemented temporary volume limits for LATAM traffic on Provider_B, introduced stricter velocity checks, and enforced mandatory 3DS for the affected Mastercard BIN pool.
 
-### 1. Card Testing / Velocity Attack (Player PL00001)
-* **Pattern:** 25 rapid successful deposits within 50 minutes using **27 unique card BINs** from Germany.
-* **Risk Score:** 85+ (Critical).
-* **Action Recommended:** Immediate account freeze, full device fingerprint audit, and blacklisting of the associated compromised BIN ranges.
+### Case 3: Gateway SLA Breach (Provider_D Technical Outage)
+* **Anomaly:** Provider_D's Success Rate dropped to 45.8% (against an internal benchmark of 65%+). Investigation showed the provider's average response time spiked to 13.9 seconds, causing massive timeouts and session abandonments.
+* **Resolution:** Suspended cascading/routing rules for Provider_D and redirected the traffic flow to Provider_C (top performer with 73.4% SR) until the technical team confirms SLA restoration.
 
-### 2. Coordinated Friendly Fraud Spike (Brazil)
-* **Pattern:** A critical chargeback surge up to **4.2%** in June 2025 via `Provider_B`, heavily concentrated in the Mastercard BIN range (`500000–559999`).
-* **Action Recommended:** Tighten anti-fraud filters for LATAM traffic on `Provider_B`, implement velocity checks, and enforce mandatory 3DS verification for this specific BIN pool.
-
-### 3. Payment Provider Technical Outage (Provider_D)
-* **Pattern:** Success Rate dropped to **45.8%** (benchmark is 65%+), while average response time spiked to **13.9 seconds** (SLA breach due to gateway/provider timeouts).
-* **Action Recommended:** Temporarily suspend cascading/routing to `Provider_D` and reroute traffic to `Provider_C` (Top performer with 73.4% SR) until the technical SLA is restored.
-
----
-
-## 🛠️ Hard Skills Applied
-* **Advanced Data Analytics:** Pivot Tables, Data Aggregation, and Trend Analysis.
-* **Excel Functions Used:** `XLOOKUP`, `SUMIFS`, `COUNTIFS`, `IF`, `AVERAGE`.
-* **Domain Knowledge:** Payment Flows (PSP, Acquirer, Issuer, 3DS), Anti-Fraud Scenarios (Multi-accounting, Bonus Abuse, Card Testing), Risk Scoring, and Regional Fraud Specifics (LATAM/Europe).
+## Tech Stack & Domain Knowledge
+* **Data Analytics:** Advanced Excel (Pivot Tables, XLOOKUP, SUMIFS, COUNTIFS, IF, AVERAGE), data validation, and trend monitoring.
+* **Domain Expertise:** Payment flows (PSP, Acquirer, Issuer, Routing, Cascading), Anti-Fraud mechanics (Multi-accounting, Bonus Abuse, Account Takeover), and risk mitigation.
