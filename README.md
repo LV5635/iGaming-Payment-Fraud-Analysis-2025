@@ -1,31 +1,78 @@
-# iGaming Payment Operations & Anti-Fraud Analysis (2025)
+# Gaming Payment Operations & Fraud Analysis (2025)
 
 ## Project Overview
-This project is an end-to-end data analysis focused on payment monitoring and fraud detection. Using a dataset of 10,055 transactions across 4 payment service providers (PSPs) and 10 countries, I simulated core tasks of a Payment Operations / Fraud Analyst: tracking system health, identifying gateway outages, and investigating fraud patterns.
+
+This project analyses 10,055 payment transactions across 4 payment providers and 10 countries. The goal was to simulate the work of a Junior Payment Operations / Fraud Analyst by monitoring payment performance, identifying operational issues, and investigating suspicious transaction patterns.
 
 ![iGaming Risk Intelligence Dashboard](Dashboard.png)
 
-## Global Portfolio Metrics (KPIs)
+## Dashboard KPIs
+
 * Total Volume: €5,590,234
-* Success Rate (SR): 64.9%
-* Approval Rate (AR): 75.6%
+* Success Rate: 64.9%
+* Approval Rate: 75.6%
 * Chargeback Ratio: 0.66%
 * Fraud Flag Rate: 3.82%
 
-## Incident Investigations
+## Key Findings
 
-### Case 1: Velocity Attack / Card Testing (Player PL00001)
-* **Anomaly:** Player account generated 25 successful deposits within 50 minutes. The operations triggered a critical Risk Score (85+) due to the use of 27 unique card BINs from Germany on a single account.
-* **Resolution:** Immediate account suspension, device fingerprint audit, and blacklisting of the compromised BIN ranges to prevent further card-testing attempts.
+### Provider Performance
 
-### Case 2: Coordinated Friendly Fraud Spike (Brazil Market)
-* **Anomaly:** A severe chargeback spike reaching 4.2% was detected in June 2025. The issue was strictly isolated to Provider_B and heavily concentrated within the Mastercard BIN range (500000–559999).
-* **Resolution:** Implemented temporary volume limits for LATAM traffic on Provider_B, introduced stricter velocity checks, and enforced mandatory 3DS for the affected Mastercard BIN pool.
+Provider_D showed the weakest performance among all providers, with a Success Rate of 45.8% and an average response time of 13.9 seconds. The provider also recorded the highest share of approved but unsuccessful transactions.
 
-### Case 3: Gateway SLA Breach (Provider_D Technical Outage)
-* **Anomaly:** Provider_D's Success Rate dropped to 45.8% (against an internal benchmark of 65%+). Investigation showed the provider's average response time spiked to 13.9 seconds, causing massive timeouts and session abandonments.
-* **Resolution:** Suspended cascading/routing rules for Provider_D and redirected the traffic flow to Provider_C (top performer with 73.4% SR) until the technical team confirms SLA restoration.
+### Chargeback Risk
 
-## Tech Stack & Domain Knowledge
-* **Data Analytics:** Advanced Excel (Pivot Tables, XLOOKUP, SUMIFS, COUNTIFS, IF, AVERAGE), data validation, and trend monitoring.
-* **Domain Expertise:** Payment flows (PSP, Acquirer, Issuer, Routing, Cascading), Anti-Fraud mechanics (Multi-accounting, Bonus Abuse, Account Takeover), and risk mitigation.
+Brazil recorded the highest chargeback rate in the dataset (2.4%) and generated the largest number of chargebacks compared to other countries.
+
+### Multi-Account Activity
+
+617 transactions were flagged as multi-account activity (6.1% of all transactions). Activity was observed across multiple countries, with Germany, UK and Brazil generating the highest volumes.
+
+### Card Testing Investigation (PL00001)
+
+A review of Player PL00001 identified a pattern consistent with card testing activity. The account completed 25 low-value deposits within a short period of time, significantly exceeding normal transaction behaviour.
+
+## Investigation Summary
+
+### Case Study: Card Testing Pattern (PL00001)
+
+Findings:
+
+* 25 deposits completed within 50 minutes
+* Unusually high transaction frequency
+* Low average transaction value
+* Multiple payment instruments used
+
+Recommended Actions:
+
+* Review account activity
+* Apply velocity controls for rapid repeated deposits
+* Introduce additional verification for similar behaviour patterns
+
+## Tools Used
+
+* Microsoft Excel
+* Pivot Tables
+* XLOOKUP
+* COUNTIFS
+* SUMIFS
+* IF Functions
+* Dashboard Reporting
+
+## Concepts Covered
+
+### Payment Operations
+
+* Approval Rate
+* Success Rate
+* Chargeback Ratio
+* Provider Performance Monitoring
+* Payment Flow Analysis
+
+### Fraud & Risk
+
+* Card Testing
+* Multi-Accounting
+* Chargeback Monitoring
+* Transaction Velocity Analysis
+* Fraud Flag Review
